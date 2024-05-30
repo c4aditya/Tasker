@@ -26,5 +26,26 @@ def delete_task(id):
     supabase.table('tasks').delete().eq('id', id).execute()
     return redirect(url_for('index'))
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template('login.html')
+    email = request.form['email']
+    password = request.form['password']
+    user, count = supabase.table('users').select("*").eq('email', email).eq('password', password).execute()
+    if user[1]:
+        return redirect(url_for('index'))
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/register', methods=['GET','POST'])
+def register():
+    if request.method == 'GET':
+        return render_template('register.html')
+    email = request.form['email']
+    password = request.form['password']
+    supabase.table('users').insert({"email": email, "password": password}).execute()
+    return redirect(url_for('login'))
+
 if __name__ == '__main__':
     app.run(debug=True)

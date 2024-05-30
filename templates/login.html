@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Tasker</title>
+</head>
+<body>
+    <h1>Welcome to Tasker</h1>
+    <p>Tasker is a simple task management application that allows you to create, update, and delete tasks.</p>
+    <div class="login">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+            <input type="text" name="email" id="username" placeholder="Enter Email">
+            <input type="password" name="password" id="password" placeholder="Enter Password">
+            <button type="submit">Login</button>
+        </form>
+        <a href="/register">Register</a>
+    </div>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        p {
+            text-align: center;
+        }
+        .login {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .login input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .login button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</body>
+</html>
