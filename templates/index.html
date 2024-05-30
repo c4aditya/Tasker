@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasker - Aditya Singh</title>
+</head>
+<body>
+    <h1>Welcome to Tasker</h1>
+    <p>Tasker is a simple task management application that allows you to create, update, and delete tasks.</p>
+    <div class="add-task">
+        <form action="/add-task" method="post">
+            <input type="text" name="task" id="task" placeholder="Enter Task">
+            <button type="submit">Add Task</button>
+        </form>
+    </div>
+    <div class="tasks">
+        <h2>Tasks</h2>
+        <form method="post">
+        <ol id="tasks">
+            {% if count == 0 %}
+                <p>No tasks found.</p>
+            {% endif %}
+            {% for task in tasks %}
+                <li>{{ task.task }}
+                    <button type="submit" formaction="/delete-task/{{ task.id }}">Delete</button></li>
+            {% endfor %}
+        </ol>
+        </form>
+    </div>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        text-align: center;
+        margin-top: 50px;
+    }
+    p {
+        text-align: center;
+    }
+    .add-task {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .add-task input {
+        padding: 10px;
+        font-size: 16px;
+    }
+    .add-task button {
+        padding: 10px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    .tasks {
+        margin-top: 50px;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+    }
+    .tasks h2 {
+        text-align: center;
+    }
+    .tasks ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .tasks li {
+        padding: 10px;
+        font-size: 16px;
+        border-bottom: 1px solid #ccc;
+    }
+    .tasks li:last-child {
+        border-bottom: none;
+    }
+    .tasks li:hover {
+        background-color: #f9f9f9;
+    }
+    .tasks li.completed {
+        text-decoration: line-through;
+    }
+    .tasks button {
+        padding: 5px 10px;
+        font-size: 16px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        cursor: pointer;
+        float: right;
+    }
+</style>
+</body>
+</html>
